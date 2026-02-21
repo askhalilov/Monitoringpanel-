@@ -130,60 +130,60 @@ export function Sensors() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Заголовок */}
-      <div>
-        <h2 className="text-2xl font-semibold text-slate-900">Мониторинг датчиков</h2>
-        <p className="text-slate-500 mt-1">Управление и контроль измерительных приборов</p>
+      <div className="glass-effect rounded-2xl p-4 md:p-6 shadow-md border border-emerald-100">
+        <h2 className="text-xl md:text-2xl font-bold text-emerald-800">Мониторинг датчиков</h2>
+        <p className="text-emerald-600 mt-1 text-sm md:text-base">Управление и контроль измерительных приборов</p>
       </div>
 
       {/* Статистика */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
-              <Gauge className="text-emerald-600" size={20} />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl flex items-center justify-center shadow-md">
+              <Gauge className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Всего датчиков</p>
-              <p className="text-2xl font-semibold text-slate-900">{sensorsData.length}</p>
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Всего датчиков</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">{sensorsData.length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
-              <CheckCircle className="text-emerald-600" size={20} />
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl flex items-center justify-center shadow-md">
+              <CheckCircle className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Активные</p>
-              <p className="text-2xl font-semibold text-slate-900">
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Активные</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">
                 {sensorsData.filter((s) => s.status === 'active').length}
               </p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center">
-              <AlertTriangle className="text-amber-600" size={20} />
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-md">
+              <AlertTriangle className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Предупреждения</p>
-              <p className="text-2xl font-semibold text-slate-900">
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Предупреждения</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">
                 {sensorsData.filter((s) => s.status === 'warning').length}
               </p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center">
-              <XCircle className="text-red-600" size={20} />
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-red-400 to-red-600 rounded-xl flex items-center justify-center shadow-md">
+              <XCircle className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Ошибки</p>
-              <p className="text-2xl font-semibold text-slate-900">
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Ошибки</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">
                 {sensorsData.filter((s) => s.status === 'error').length}
               </p>
             </div>
@@ -191,10 +191,10 @@ export function Sensors() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {/* Список датчиков */}
-        <div className="lg:col-span-1 bg-white rounded-lg border border-slate-200 p-6">
-          <h3 className="font-semibold text-slate-900 mb-4">Список датчиков</h3>
+        <div className="lg:col-span-1 glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+          <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">Список датчиков</h3>
           <div className="space-y-2">
             {sensorsData.map((sensor) => {
               const statusConfig = getStatusConfig(sensor.status);
@@ -205,23 +205,23 @@ export function Sensors() {
                 <button
                   key={sensor.id}
                   onClick={() => setSelectedSensor(sensor)}
-                  className={`w-full text-left p-4 rounded-lg border transition-all ${
+                  className={`w-full text-left p-3 md:p-4 rounded-xl border transition-all ${
                     isSelected
-                      ? 'border-emerald-300 bg-emerald-50'
-                      : 'border-slate-200 hover:bg-slate-50'
+                      ? 'border-emerald-400 bg-gradient-to-r from-emerald-50 to-green-50 shadow-md transform scale-105'
+                      : 'border-emerald-100 hover:bg-emerald-50 hover:shadow-sm'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <p className="font-medium text-slate-900">{sensor.name}</p>
-                      <p className="text-sm text-slate-500 mt-1">{sensor.location}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-emerald-800 text-sm md:text-base truncate">{sensor.name}</p>
+                      <p className="text-xs md:text-sm text-emerald-600 mt-1 truncate">{sensor.location}</p>
                     </div>
-                    <StatusIcon className={statusConfig.text_color} size={18} />
+                    <StatusIcon className={statusConfig.text_color} size={16} />
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-slate-500">{sensor.type}</span>
+                    <span className="text-xs text-emerald-600 font-medium">{sensor.type}</span>
                     {sensor.status !== 'error' && (
-                      <span className="font-mono text-sm text-slate-700">
+                      <span className="font-mono text-xs md:text-sm text-emerald-700 font-semibold">
                         {sensor.value} {sensor.unit}
                       </span>
                     )}
@@ -233,23 +233,23 @@ export function Sensors() {
         </div>
 
         {/* Детали датчика */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 md:space-y-6">
           {/* Информация о датчике */}
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <h3 className="font-semibold text-slate-900 text-xl">{selectedSensor.name}</h3>
-                <p className="text-slate-500 mt-1">{selectedSensor.type}</p>
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-4 md:mb-6 gap-3">
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-emerald-800 text-lg md:text-xl truncate">{selectedSensor.name}</h3>
+                <p className="text-emerald-600 mt-1 text-sm md:text-base">{selectedSensor.type}</p>
               </div>
               {(() => {
                 const statusConfig = getStatusConfig(selectedSensor.status);
                 const StatusIcon = statusConfig.icon;
                 return (
                   <div
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg ${statusConfig.bg} ${statusConfig.border} border`}
+                    className={`flex items-center gap-2 px-3 py-2 rounded-xl ${statusConfig.bg} ${statusConfig.border} border shadow-sm flex-shrink-0`}
                   >
-                    <StatusIcon className={statusConfig.text_color} size={18} />
-                    <span className={`text-sm ${statusConfig.text_color}`}>
+                    <StatusIcon className={statusConfig.text_color} size={16} />
+                    <span className={`text-xs md:text-sm font-semibold ${statusConfig.text_color}`}>
                       {statusConfig.text}
                     </span>
                   </div>
@@ -257,64 +257,64 @@ export function Sensors() {
               })()}
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+              <div className="space-y-3 md:space-y-4">
                 <div className="flex items-start gap-3">
-                  <MapPin className="text-slate-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-slate-500">Расположение</p>
-                    <p className="text-slate-900">{selectedSensor.location}</p>
+                  <MapPin className="text-emerald-500 mt-1 flex-shrink-0" size={18} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs md:text-sm text-emerald-600 font-medium">Расположение</p>
+                    <p className="text-emerald-800 text-sm md:text-base font-semibold">{selectedSensor.location}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <TrendingUp className="text-slate-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-slate-500">Текущее значение</p>
+                  <TrendingUp className="text-emerald-500 mt-1 flex-shrink-0" size={18} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs md:text-sm text-emerald-600 font-medium">Текущее значение</p>
                     {selectedSensor.status !== 'error' ? (
-                      <p className="text-slate-900 font-mono">
+                      <p className="text-emerald-800 font-mono text-sm md:text-base font-semibold">
                         {selectedSensor.value} {selectedSensor.unit}
                       </p>
                     ) : (
-                      <p className="text-red-600">Нет данных</p>
+                      <p className="text-red-600 font-semibold text-sm md:text-base">Нет данных</p>
                     )}
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 <div className="flex items-start gap-3">
-                  <Activity className="text-slate-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-slate-500">Предельное значение (ПДК)</p>
-                    <p className="text-slate-900 font-mono">
+                  <Activity className="text-emerald-500 mt-1 flex-shrink-0" size={18} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs md:text-sm text-emerald-600 font-medium">Предельное значение (ПДК)</p>
+                    <p className="text-emerald-800 font-mono text-sm md:text-base font-semibold">
                       {selectedSensor.limit} {selectedSensor.unit}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Calendar className="text-slate-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-slate-500">Последняя калибровка</p>
-                    <p className="text-slate-900">{selectedSensor.lastCalibration}</p>
+                  <Calendar className="text-emerald-500 mt-1 flex-shrink-0" size={18} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs md:text-sm text-emerald-600 font-medium">Последняя калибровка</p>
+                    <p className="text-emerald-800 text-sm md:text-base font-semibold">{selectedSensor.lastCalibration}</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {selectedSensor.status !== 'error' && (
-              <div className="mt-6">
-                <div className="flex justify-between text-sm text-slate-500 mb-2">
+              <div className="mt-4 md:mt-6">
+                <div className="flex justify-between text-xs md:text-sm text-emerald-600 mb-2 font-medium">
                   <span>Загрузка</span>
                   <span>
                     {((selectedSensor.value / selectedSensor.limit) * 100).toFixed(1)}%
                   </span>
                 </div>
-                <div className="w-full bg-slate-100 rounded-full h-3">
+                <div className="w-full bg-emerald-100 rounded-full h-3 shadow-inner">
                   <div
-                    className={`h-3 rounded-full transition-all ${
+                    className={`h-3 rounded-full transition-all shadow-md ${
                       selectedSensor.status === 'warning'
-                        ? 'bg-amber-500'
-                        : 'bg-emerald-500'
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600'
+                        : 'bg-gradient-to-r from-emerald-500 to-green-600'
                     }`}
                     style={{
                       width: `${Math.min(
@@ -329,57 +329,64 @@ export function Sensors() {
           </div>
 
           {/* График истории */}
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">
               История показаний (последние 20 минут)
             </h3>
             {selectedSensor.status !== 'error' ? (
               <ResponsiveContainer width="100%" height={250}>
                 <AreaChart data={historyData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                  <XAxis dataKey="time" stroke="#64748b" style={{ fontSize: '12px' }} />
-                  <YAxis stroke="#64748b" style={{ fontSize: '12px' }} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#d1fae5" />
+                  <XAxis dataKey="time" stroke="#059669" style={{ fontSize: '11px' }} />
+                  <YAxis stroke="#059669" style={{ fontSize: '11px' }} />
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: 'white',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '8px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      border: '1px solid #6ee7b7',
+                      borderRadius: '12px',
+                      backdropFilter: 'blur(10px)',
                     }}
                   />
                   <Area
                     type="monotone"
                     dataKey="value"
                     stroke="#10b981"
-                    fill="#10b98120"
-                    strokeWidth={2}
+                    fill="url(#areaGradient)"
+                    strokeWidth={2.5}
                   />
+                  <defs>
+                    <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#10b981" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#10b981" stopOpacity={0.05} />
+                    </linearGradient>
+                  </defs>
                 </AreaChart>
               </ResponsiveContainer>
             ) : (
-              <div className="h-[250px] flex items-center justify-center bg-slate-50 rounded-lg">
-                <div className="text-center">
-                  <XCircle className="text-red-400 mx-auto mb-2" size={48} />
-                  <p className="text-slate-600">Нет данных с датчика</p>
-                  <p className="text-sm text-slate-400 mt-1">Проверьте подключение</p>
+              <div className="h-[250px] flex items-center justify-center bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <div className="text-center p-4">
+                  <XCircle className="text-red-400 mx-auto mb-2" size={40} />
+                  <p className="text-emerald-800 font-semibold">Нет данных с датчика</p>
+                  <p className="text-sm text-emerald-600 mt-1">Проверьте подключение</p>
                 </div>
               </div>
             )}
           </div>
 
           {/* Калибровка */}
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">Информация о калибровке</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Последняя калибровка</p>
-                <p className="text-slate-900 font-medium">{selectedSensor.lastCalibration}</p>
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">Информация о калибровке</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div className="p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">Последняя калибровка</p>
+                <p className="text-emerald-800 font-semibold text-sm md:text-base">{selectedSensor.lastCalibration}</p>
               </div>
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Следующая калибровка</p>
-                <p className="text-slate-900 font-medium">{selectedSensor.nextCalibration}</p>
+              <div className="p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">Следующая калибровка</p>
+                <p className="text-emerald-800 font-semibold text-sm md:text-base">{selectedSensor.nextCalibration}</p>
               </div>
             </div>
-            <button className="mt-4 w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
+            <button className="mt-4 w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl hover:from-emerald-600 hover:to-green-700 transition-all shadow-md hover:shadow-lg font-semibold text-sm md:text-base">
               Запланировать калибровку
             </button>
           </div>

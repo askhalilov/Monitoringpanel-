@@ -1,15 +1,33 @@
 import { Outlet, Link, useLocation } from 'react-router';
-import { Activity, Gauge, Settings, FileText, AlertTriangle } from 'lucide-react';
+import { Activity, Gauge, Settings, FileText, AlertTriangle, Menu, X, Leaf } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function Root() {
   const location = useLocation();
   const [time, setTime] = useState(new Date());
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const navItems = [
     { path: '/', label: 'Панель мониторинга', icon: Activity },
@@ -19,37 +37,60 @@ export function Root() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
-        <div className="px-6 py-4">
+      <header className="glass-effect sticky top-0 z-40 shadow-md">
+        <div className="px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
-                <Activity className="text-white" size={24} />
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                <Leaf className="text-white" size={20} />
               </div>
               <div>
-                <h1 className="font-semibold text-slate-900">ЭкоМониторинг</h1>
-                <p className="text-sm text-slate-500">Система контроля качества окружающей среды</p>
+                <h1 className="font-bold text-emerald-800 text-lg md:text-xl nature-gradient-text">
+                  ЭкоМониторинг
+                </h1>
+                <p className="text-xs md:text-sm text-emerald-600 hidden sm:block">
+                  Контроль качества окружающей среды
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
-              <div className="text-right">
-                <p className="text-sm text-slate-500">Текущее время</p>
-                <p className="font-mono text-slate-900">{time.toLocaleTimeString('ru-RU')}</p>
+
+            <div className="flex items-center gap-3 md:gap-6">
+              {/* Time - hidden on small mobile */}
+              <div className="text-right hidden md:block">
+                <p className="text-xs text-emerald-600">Текущее время</p>
+                <p className="font-mono text-emerald-800 font-semibold">
+                  {time.toLocaleTimeString('ru-RU')}
+                </p>
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg">
-                <AlertTriangle className="text-amber-600" size={18} />
-                <span className="text-sm text-amber-900">2 предупреждения</span>
+
+              {/* Alerts */}
+              <div className="hidden sm:flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-200 rounded-lg shadow-sm">
+                <AlertTriangle className="text-amber-600" size={16} />
+                <span className="text-xs md:text-sm text-amber-900 font-medium">2</span>
               </div>
+
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 hover:bg-emerald-100 rounded-lg transition-colors"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="text-emerald-700" size={24} />
+                ) : (
+                  <Menu className="text-emerald-700" size={24} />
+                )}
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="flex">
-        {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-slate-200 min-h-[calc(100vh-89px)]">
+      <div className="flex relative">
+        {/* Desktop Sidebar */}
+        <aside className="hidden lg:block w-64 glass-effect min-h-[calc(100vh-89px)] border-r border-emerald-100 shadow-md">
           <nav className="p-4">
             <ul className="space-y-2">
               {navItems.map((item) => {
@@ -59,14 +100,14 @@ export function Root() {
                   <li key={item.path}>
                     <Link
                       to={item.path}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
+                      className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                         isActive
-                          ? 'bg-emerald-50 text-emerald-700'
-                          : 'text-slate-600 hover:bg-slate-50'
+                          ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg transform scale-105'
+                          : 'text-emerald-700 hover:bg-emerald-100'
                       }`}
                     >
                       <Icon size={20} />
-                      <span>{item.label}</span>
+                      <span className="font-medium">{item.label}</span>
                     </Link>
                   </li>
                 );
@@ -75,9 +116,67 @@ export function Root() {
           </nav>
         </aside>
 
+        {/* Mobile Sidebar Overlay */}
+        {isMobileMenuOpen && (
+          <div
+            className="lg:hidden fixed inset-0 bg-black/50 z-40 backdrop-blur-sm"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+
+        {/* Mobile Sidebar */}
+        <aside
+          className={`lg:hidden fixed top-[73px] md:top-[89px] left-0 bottom-0 w-72 glass-effect z-50 shadow-2xl transform transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+        >
+          <nav className="p-4 h-full overflow-y-auto">
+            {/* Time on mobile menu */}
+            <div className="mb-6 p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+              <p className="text-xs text-emerald-600 mb-1">Текущее время</p>
+              <p className="font-mono text-lg text-emerald-800 font-semibold">
+                {time.toLocaleTimeString('ru-RU')}
+              </p>
+            </div>
+
+            <ul className="space-y-2">
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.path;
+                const Icon = item.icon;
+                return (
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg'
+                          : 'text-emerald-700 hover:bg-emerald-100'
+                      }`}
+                    >
+                      <Icon size={20} />
+                      <span className="font-medium">{item.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Alert info in mobile menu */}
+            <div className="mt-6 p-4 bg-amber-50 rounded-xl border border-amber-200">
+              <div className="flex items-center gap-2 mb-2">
+                <AlertTriangle className="text-amber-600" size={18} />
+                <span className="text-sm font-medium text-amber-900">Предупреждения</span>
+              </div>
+              <p className="text-xs text-amber-700">2 активных уведомления</p>
+            </div>
+          </nav>
+        </aside>
+
         {/* Main Content */}
-        <main className="flex-1 p-6">
-          <Outlet />
+        <main className="flex-1 p-4 md:p-6">
+          <div className="animate-fade-in">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

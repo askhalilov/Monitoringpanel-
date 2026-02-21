@@ -194,65 +194,65 @@ export function Equipment() {
     equipmentData.reduce((acc, eq) => acc + eq.efficiency, 0) / equipmentData.length;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Заголовок */}
-      <div>
-        <h2 className="text-2xl font-semibold text-slate-900">Управление оборудованием</h2>
-        <p className="text-slate-500 mt-1">Мониторинг и контроль производственного оборудования</p>
+      <div className="glass-effect rounded-2xl p-4 md:p-6 shadow-md border border-emerald-100">
+        <h2 className="text-xl md:text-2xl font-bold text-emerald-800">Управление оборудованием</h2>
+        <p className="text-emerald-600 mt-1 text-sm md:text-base">Мониторинг и контроль производственного оборудования</p>
       </div>
 
       {/* Общая статистика */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
-              <Settings className="text-emerald-600" size={20} />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl flex items-center justify-center shadow-md">
+              <Settings className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Всего единиц</p>
-              <p className="text-2xl font-semibold text-slate-900">{equipmentData.length}</p>
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Всего единиц</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">{equipmentData.length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <Power className="text-blue-600" size={20} />
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
+              <Power className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">В работе</p>
-              <p className="text-2xl font-semibold text-slate-900">{activeCount}</p>
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">В работе</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">{activeCount}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center">
-              <TrendingUp className="text-amber-600" size={20} />
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-md">
+              <TrendingUp className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Средний КПД</p>
-              <p className="text-2xl font-semibold text-slate-900">{avgEfficiency.toFixed(1)}%</p>
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Средний КПД</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">{avgEfficiency.toFixed(1)}%</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-rose-50 rounded-lg flex items-center justify-center">
-              <BarChart3 className="text-rose-600" size={20} />
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center shadow-md">
+              <BarChart3 className="text-white" size={18} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Выбросы (сутки)</p>
-              <p className="text-2xl font-semibold text-slate-900">{totalEmissions.toFixed(0)}</p>
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Выбросы (сутки)</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">{totalEmissions.toFixed(0)}</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {/* Список оборудования */}
-        <div className="lg:col-span-1 bg-white rounded-lg border border-slate-200 p-6">
-          <h3 className="font-semibold text-slate-900 mb-4">Список оборудования</h3>
+        <div className="lg:col-span-1 glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+          <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">Список оборудования</h3>
           <div className="space-y-2">
             {equipmentData.map((equipment) => {
               const statusConfig = getStatusConfig(equipment.status);
@@ -262,23 +262,23 @@ export function Equipment() {
                 <button
                   key={equipment.id}
                   onClick={() => setSelectedEquipment(equipment)}
-                  className={`w-full text-left p-4 rounded-lg border transition-all ${
+                  className={`w-full text-left p-3 md:p-4 rounded-xl border transition-all ${
                     isSelected
-                      ? 'border-emerald-300 bg-emerald-50'
-                      : 'border-slate-200 hover:bg-slate-50'
+                      ? 'border-emerald-400 bg-gradient-to-r from-emerald-50 to-green-50 shadow-md transform scale-105'
+                      : 'border-emerald-100 hover:bg-emerald-50 hover:shadow-sm'
                   }`}
                 >
                   <div className="flex items-start justify-between mb-2">
-                    <div className="flex-1">
-                      <p className="font-medium text-slate-900">{equipment.name}</p>
-                      <p className="text-sm text-slate-500 mt-1">{equipment.location}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-emerald-800 text-sm md:text-base truncate">{equipment.name}</p>
+                      <p className="text-xs md:text-sm text-emerald-600 mt-1 truncate">{equipment.location}</p>
                     </div>
-                    <div className={`w-2 h-2 rounded-full ${statusConfig.dot} mt-2`} />
+                    <div className={`w-2 h-2 md:w-3 md:h-3 rounded-full ${statusConfig.dot} mt-2 flex-shrink-0 shadow-md`} />
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-slate-500">{equipment.category}</span>
+                    <span className="text-emerald-600 font-medium truncate">{equipment.category}</span>
                     {equipment.status === 'active' && (
-                      <span className="text-emerald-600 font-medium">{equipment.power}%</span>
+                      <span className="text-emerald-600 font-bold ml-2 flex-shrink-0">{equipment.power}%</span>
                     )}
                   </div>
                 </button>
@@ -288,21 +288,21 @@ export function Equipment() {
         </div>
 
         {/* Детали оборудования */}
-        <div className="lg:col-span-2 space-y-6">
+        <div className="lg:col-span-2 space-y-4 md:space-y-6">
           {/* Основная информация */}
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <h3 className="font-semibold text-slate-900 text-xl">{selectedEquipment.name}</h3>
-                <p className="text-slate-500 mt-1">{selectedEquipment.category}</p>
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <div className="flex flex-col sm:flex-row items-start sm:items-start justify-between mb-4 md:mb-6 gap-3">
+              <div className="flex-1 min-w-0">
+                <h3 className="font-bold text-emerald-800 text-lg md:text-xl truncate">{selectedEquipment.name}</h3>
+                <p className="text-emerald-600 mt-1 text-sm md:text-base">{selectedEquipment.category}</p>
               </div>
               {(() => {
                 const statusConfig = getStatusConfig(selectedEquipment.status);
                 const StatusIcon = statusConfig.icon;
                 return (
-                  <div className={`flex items-center gap-2 px-3 py-2 rounded-lg ${statusConfig.bg}`}>
-                    <StatusIcon className={statusConfig.text_color} size={18} />
-                    <span className={`text-sm ${statusConfig.text_color}`}>
+                  <div className={`flex items-center gap-2 px-3 py-2 rounded-xl ${statusConfig.bg} shadow-sm flex-shrink-0`}>
+                    <StatusIcon className={statusConfig.text_color} size={16} />
+                    <span className={`text-xs md:text-sm font-semibold ${statusConfig.text_color}`}>
                       {statusConfig.text}
                     </span>
                   </div>
@@ -310,49 +310,49 @@ export function Equipment() {
               })()}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Мощность</p>
-                <p className="text-2xl font-semibold text-slate-900">{selectedEquipment.power}%</p>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              <div className="p-3 md:p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">Мощность</p>
+                <p className="text-xl md:text-2xl font-bold text-emerald-800">{selectedEquipment.power}%</p>
               </div>
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">КПД</p>
-                <p className="text-2xl font-semibold text-slate-900">{selectedEquipment.efficiency}%</p>
+              <div className="p-3 md:p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">КПД</p>
+                <p className="text-xl md:text-2xl font-bold text-emerald-800">{selectedEquipment.efficiency}%</p>
               </div>
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Наработка</p>
-                <p className="text-2xl font-semibold text-slate-900">{selectedEquipment.workingHours}</p>
-                <p className="text-xs text-slate-500 mt-1">часов</p>
+              <div className="p-3 md:p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">Наработка</p>
+                <p className="text-xl md:text-2xl font-bold text-emerald-800">{selectedEquipment.workingHours}</p>
+                <p className="text-xs text-emerald-600 mt-1">часов</p>
               </div>
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Расположение</p>
-                <p className="text-base font-medium text-slate-900 mt-2">{selectedEquipment.location}</p>
+              <div className="p-3 md:p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">Расположение</p>
+                <p className="text-sm md:text-base font-semibold text-emerald-800 mt-2 truncate">{selectedEquipment.location}</p>
               </div>
             </div>
           </div>
 
           {/* Расчет выбросов */}
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">Расчет выбросов от оборудования</h3>
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">Расчет выбросов от оборудования</h3>
             
-            <div className="grid grid-cols-3 gap-4 mb-6">
-              <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
-                <p className="text-sm text-emerald-700 mb-1">CO₂</p>
-                <p className="text-2xl font-semibold text-emerald-900">
+            <div className="grid grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
+              <div className="p-3 md:p-4 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl border border-emerald-200 shadow-sm">
+                <p className="text-xs md:text-sm text-emerald-700 mb-1 font-semibold">CO₂</p>
+                <p className="text-xl md:text-2xl font-bold text-emerald-900">
                   {selectedEquipment.emissions.co2}
                 </p>
                 <p className="text-xs text-emerald-600 mt-1">мг/м³</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                <p className="text-sm text-blue-700 mb-1">SO₂</p>
-                <p className="text-2xl font-semibold text-blue-900">
+              <div className="p-3 md:p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 shadow-sm">
+                <p className="text-xs md:text-sm text-blue-700 mb-1 font-semibold">SO₂</p>
+                <p className="text-xl md:text-2xl font-bold text-blue-900">
                   {selectedEquipment.emissions.so2}
                 </p>
                 <p className="text-xs text-blue-600 mt-1">мкг/м³</p>
               </div>
-              <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-                <p className="text-sm text-amber-700 mb-1">NOₓ</p>
-                <p className="text-2xl font-semibold text-amber-900">
+              <div className="p-3 md:p-4 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl border border-amber-200 shadow-sm">
+                <p className="text-xs md:text-sm text-amber-700 mb-1 font-semibold">NOₓ</p>
+                <p className="text-xl md:text-2xl font-bold text-amber-900">
                   {selectedEquipment.emissions.nox}
                 </p>
                 <p className="text-xs text-amber-600 mt-1">мкг/м³</p>
@@ -361,14 +361,15 @@ export function Equipment() {
 
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={emissionsChartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis dataKey="name" stroke="#64748b" style={{ fontSize: '12px' }} />
-                <YAxis stroke="#64748b" style={{ fontSize: '12px' }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#d1fae5" />
+                <XAxis dataKey="name" stroke="#059669" style={{ fontSize: '11px' }} />
+                <YAxis stroke="#059669" style={{ fontSize: '11px' }} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: 'white',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '8px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    border: '1px solid #6ee7b7',
+                    borderRadius: '12px',
+                    backdropFilter: 'blur(10px)',
                   }}
                 />
                 <Bar dataKey="value" radius={[8, 8, 0, 0]}>
@@ -379,9 +380,9 @@ export function Equipment() {
               </BarChart>
             </ResponsiveContainer>
 
-            <div className="mt-4 p-4 bg-slate-50 rounded-lg">
-              <p className="text-sm text-slate-600">
-                <span className="font-medium">Суммарные выбросы:</span>{' '}
+            <div className="mt-4 p-3 md:p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl border border-emerald-200">
+              <p className="text-xs md:text-sm text-emerald-800">
+                <span className="font-bold">Суммарные выбросы:</span>{' '}
                 {(
                   selectedEquipment.emissions.co2 +
                   selectedEquipment.emissions.so2 +
@@ -393,26 +394,26 @@ export function Equipment() {
           </div>
 
           {/* Обслуживание */}
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
             <div className="flex items-center gap-2 mb-4">
-              <Clock className="text-slate-600" size={20} />
-              <h3 className="font-semibold text-slate-900">График обслуживания</h3>
+              <Clock className="text-emerald-600" size={20} />
+              <h3 className="font-bold text-emerald-800 text-base md:text-lg">График обслуживания</h3>
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-slate-50 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Последнее обслуживание</p>
-                <p className="text-slate-900 font-medium">{selectedEquipment.lastMaintenance}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div className="p-4 bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
+                <p className="text-xs md:text-sm text-emerald-600 mb-1 font-medium">Последнее обслуживание</p>
+                <p className="text-emerald-800 font-semibold text-sm md:text-base">{selectedEquipment.lastMaintenance}</p>
               </div>
-              <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-                <p className="text-sm text-amber-700 mb-1">Следующее обслуживание</p>
-                <p className="text-amber-900 font-medium">{selectedEquipment.nextMaintenance}</p>
+              <div className="p-4 bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl border border-amber-200">
+                <p className="text-xs md:text-sm text-amber-700 mb-1 font-medium">Следующее обслуживание</p>
+                <p className="text-amber-900 font-semibold text-sm md:text-base">{selectedEquipment.nextMaintenance}</p>
               </div>
             </div>
-            <div className="mt-4 flex gap-3">
-              <button className="flex-1 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
+            <div className="mt-4 flex flex-col sm:flex-row gap-3">
+              <button className="flex-1 px-4 py-3 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl hover:from-emerald-600 hover:to-green-700 transition-all shadow-md hover:shadow-lg font-semibold text-sm md:text-base">
                 Запланировать ТО
               </button>
-              <button className="flex-1 px-4 py-2 bg-slate-200 text-slate-700 rounded-lg hover:bg-slate-300 transition-colors">
+              <button className="flex-1 px-4 py-3 bg-emerald-100 text-emerald-700 rounded-xl hover:bg-emerald-200 transition-all font-semibold text-sm md:text-base">
                 История обслуживания
               </button>
             </div>

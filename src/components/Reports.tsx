@@ -125,47 +125,47 @@ export function Reports() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       {/* Заголовок */}
-      <div>
-        <h2 className="text-2xl font-semibold text-slate-900">Отчеты и аналитика</h2>
-        <p className="text-slate-500 mt-1">Формирование и экспорт отчетов по экологическому мониторингу</p>
+      <div className="glass-effect rounded-2xl p-4 md:p-6 shadow-md border border-emerald-100">
+        <h2 className="text-xl md:text-2xl font-bold text-emerald-800">Отчеты и аналитика</h2>
+        <p className="text-emerald-600 mt-1 text-sm md:text-base">Формирование и экспорт отчетов по экологическому мониторингу</p>
       </div>
 
       {/* Статистика */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center">
-              <FileText className="text-blue-600" size={20} />
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center shadow-md">
+              <FileText className="text-white" size={20} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Всего отчетов</p>
-              <p className="text-2xl font-semibold text-slate-900">{reportsData.length}</p>
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Всего отчетов</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">{reportsData.length}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center">
-              <CheckCircle className="text-emerald-600" size={20} />
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-emerald-400 to-green-600 rounded-xl flex items-center justify-center shadow-md">
+              <CheckCircle className="text-white" size={20} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Готовы к экспорту</p>
-              <p className="text-2xl font-semibold text-slate-900">
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Готовы к экспорту</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">
                 {reportsData.filter((r) => r.status === 'completed').length}
               </p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg border border-slate-200 p-5">
+        <div className="glass-effect rounded-xl border border-emerald-100 p-4 md:p-5 shadow-md hover:shadow-lg transition-all card-hover">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center">
-              <AlertTriangle className="text-amber-600" size={20} />
+            <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center shadow-md">
+              <AlertTriangle className="text-white" size={20} />
             </div>
             <div>
-              <p className="text-sm text-slate-500">Требуют внимания</p>
-              <p className="text-2xl font-semibold text-slate-900">
+              <p className="text-xs md:text-sm text-emerald-600 font-medium">Требуют внимания</p>
+              <p className="text-xl md:text-2xl font-bold text-emerald-800">
                 {reportsData.filter((r) => r.status === 'warning').length}
               </p>
             </div>
@@ -173,32 +173,32 @@ export function Reports() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {/* Список отчетов */}
-        <div className="lg:col-span-2 bg-white rounded-lg border border-slate-200 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="font-semibold text-slate-900">Сформированные отчеты</h3>
-            <button className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors">
+        <div className="lg:col-span-2 glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 md:mb-6 gap-3">
+            <h3 className="font-bold text-emerald-800 text-base md:text-lg">Сформированные отчеты</h3>
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 md:py-2.5 bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl hover:from-emerald-600 hover:to-green-700 transition-all shadow-md hover:shadow-lg font-semibold text-sm md:text-base">
               <FileText size={18} />
               Создать отчет
             </button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2 md:space-y-3">
             {reportsData.map((report) => (
               <div
                 key={report.id}
-                className="flex items-center justify-between p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
+                className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 md:p-4 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition-all gap-3"
               >
-                <div className="flex items-start gap-4 flex-1">
-                  <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FileText className="text-blue-600" size={20} />
+                <div className="flex items-start gap-3 md:gap-4 flex-1 min-w-0 w-full">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                    <FileText className="text-white" size={18} />
                   </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-slate-900">{report.title}</p>
-                    <div className="flex items-center gap-4 mt-2 text-sm text-slate-500">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-emerald-800 text-sm md:text-base truncate">{report.title}</p>
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-2 text-xs md:text-sm text-emerald-600">
                       <span className="flex items-center gap-1">
-                        <Calendar size={14} />
+                        <Calendar size={12} />
                         {report.date}
                       </span>
                       <span>{report.type}</span>
@@ -206,10 +206,10 @@ export function Reports() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
                   {getStatusBadge(report.status)}
-                  <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
-                    <Download className="text-slate-600" size={20} />
+                  <button className="p-2 hover:bg-emerald-100 rounded-lg transition-colors">
+                    <Download className="text-emerald-600" size={20} />
                   </button>
                 </div>
               </div>
@@ -218,39 +218,39 @@ export function Reports() {
         </div>
 
         {/* Создание отчета */}
-        <div className="space-y-6">
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">Быстрое создание</h3>
-            <div className="space-y-3">
-              <button className="w-full text-left p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
-                <p className="font-medium text-slate-900">Ежедневный отчет</p>
-                <p className="text-sm text-slate-500 mt-1">Выбросы за текущие сутки</p>
+        <div className="space-y-4 md:space-y-6">
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">Быстрое создание</h3>
+            <div className="space-y-2 md:space-y-3">
+              <button className="w-full text-left p-3 md:p-4 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition-all hover:shadow-md">
+                <p className="font-semibold text-emerald-800 text-sm md:text-base">Ежедневный отчет</p>
+                <p className="text-xs md:text-sm text-emerald-600 mt-1">Выбросы за текущие сутки</p>
               </button>
-              <button className="w-full text-left p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
-                <p className="font-medium text-slate-900">Еженедельный отчет</p>
-                <p className="text-sm text-slate-500 mt-1">Сводка за неделю</p>
+              <button className="w-full text-left p-3 md:p-4 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition-all hover:shadow-md">
+                <p className="font-semibold text-emerald-800 text-sm md:text-base">Еженедельный отчет</p>
+                <p className="text-xs md:text-sm text-emerald-600 mt-1">Сводка за неделю</p>
               </button>
-              <button className="w-full text-left p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
-                <p className="font-medium text-slate-900">Ежемесячный отчет</p>
-                <p className="text-sm text-slate-500 mt-1">Детальная статистика</p>
+              <button className="w-full text-left p-3 md:p-4 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition-all hover:shadow-md">
+                <p className="font-semibold text-emerald-800 text-sm md:text-base">Ежемесячный отчет</p>
+                <p className="text-xs md:text-sm text-emerald-600 mt-1">Детальная статистика</p>
               </button>
-              <button className="w-full text-left p-4 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
-                <p className="font-medium text-slate-900">Произвольный период</p>
-                <p className="text-sm text-slate-500 mt-1">Настраиваемый отчет</p>
+              <button className="w-full text-left p-3 md:p-4 border border-emerald-100 rounded-xl hover:bg-emerald-50 transition-all hover:shadow-md">
+                <p className="font-semibold text-emerald-800 text-sm md:text-base">Произвольный период</p>
+                <p className="text-xs md:text-sm text-emerald-600 mt-1">Настраиваемый отчет</p>
               </button>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
-            <h3 className="font-semibold text-slate-900 mb-4">Форматы экспорта</h3>
+          <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+            <h3 className="font-bold text-emerald-800 mb-4 text-base md:text-lg">Форматы экспорта</h3>
             <div className="space-y-2">
               {['PDF документ', 'Excel таблица', 'CSV файл', 'JSON данные'].map((format) => (
-                <div key={format} className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+                <div key={format} className="flex items-center gap-3 p-3 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl border border-emerald-100">
                   <input
                     type="checkbox"
-                    className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500"
+                    className="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500 focus:ring-2"
                   />
-                  <span className="text-slate-700">{format}</span>
+                  <span className="text-emerald-700 font-medium text-sm md:text-base">{format}</span>
                 </div>
               ))}
             </div>
@@ -259,30 +259,30 @@ export function Reports() {
       </div>
 
       {/* Соответствие нормам */}
-      <div className="bg-white rounded-lg border border-slate-200 p-6">
-        <div className="flex items-center gap-2 mb-6">
-          <TrendingUp className="text-slate-600" size={20} />
-          <h3 className="font-semibold text-slate-900">Соответствие предельно допустимым концентрациям (ПДК)</h3>
+      <div className="glass-effect rounded-2xl border border-emerald-100 p-4 md:p-6 shadow-md">
+        <div className="flex items-center gap-2 mb-4 md:mb-6">
+          <TrendingUp className="text-emerald-600" size={20} />
+          <h3 className="font-bold text-emerald-800 text-base md:text-lg">Соответствие предельно допустимым концентрациям (ПДК)</h3>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {complianceData.map((item) => {
             const percentage = (item.current / item.limit) * 100;
             const statusColor = getComplianceStatus(item.status);
 
             return (
               <div key={item.parameter} className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-3 h-3 rounded-full ${statusColor}`} />
-                    <span className="font-medium text-slate-900">{item.parameter}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <div className={`w-3 h-3 rounded-full ${statusColor} shadow-md flex-shrink-0`} />
+                    <span className="font-semibold text-emerald-800 text-sm md:text-base">{item.parameter}</span>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <span className="text-slate-600">
+                  <div className="flex items-center gap-3 md:gap-4 ml-6 sm:ml-0">
+                    <span className="text-emerald-700 text-sm md:text-base">
                       {item.current} / {item.limit} {item.unit}
                     </span>
                     <span
-                      className={`font-medium ${
+                      className={`font-bold text-sm md:text-base ${
                         item.status === 'exceeded'
                           ? 'text-red-600'
                           : item.status === 'warning'
@@ -294,9 +294,9 @@ export function Reports() {
                     </span>
                   </div>
                 </div>
-                <div className="w-full bg-slate-100 rounded-full h-2">
+                <div className="w-full bg-emerald-100 rounded-full h-3 shadow-inner">
                   <div
-                    className={`h-2 rounded-full transition-all ${statusColor}`}
+                    className={`h-3 rounded-full transition-all shadow-md ${statusColor}`}
                     style={{ width: `${Math.min(percentage, 100)}%` }}
                   />
                 </div>
@@ -305,9 +305,9 @@ export function Reports() {
           })}
         </div>
 
-        <div className="mt-6 p-4 bg-slate-50 rounded-lg">
-          <p className="text-sm text-slate-600">
-            <span className="font-medium">Общий статус соответствия:</span> Обнаружено{' '}
+        <div className="mt-4 md:mt-6 p-3 md:p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl border border-emerald-200">
+          <p className="text-xs md:text-sm text-emerald-800">
+            <span className="font-bold">Общий статус соответствия:</span> Обнаружено{' '}
             {complianceData.filter((i) => i.status === 'exceeded').length} превышение нормативов.
             Требуется принятие мер по снижению выбросов NOₓ.
           </p>
